@@ -1,24 +1,23 @@
 using System;
 using System.Collections.Generic;
 
- public class Queen
+ public class Piece
 {
-  public int locX;
-  public int locY;
-  public int pawnLocX;
-  public int pawnLocY;
+  public int LocX;
+  public int LocY;
 }
 public class QueenAttack
 {
   public static void Main()
   {
-    Queen newQueen = new Queen();
+    Piece queen = new Piece();
+    Piece pawn = new Piece();
     Console.WriteLine("Enter X Coordinate for Queen's location:");
     string queenXCoordinates = Console.ReadLine();
     int userQueenX = int.Parse(queenXCoordinates);
     if ((userQueenX >= 1) && (userQueenX <=8))
     {
-      newQueen.locX = userQueenX;
+      queen.LocX = userQueenX;
     }
     else
     { 
@@ -29,7 +28,7 @@ public class QueenAttack
     int userQueenY = int.Parse(queenYCoordinates);
     if ((userQueenY >= 1) && (userQueenY <=8))
     {
-      newQueen.locY = userQueenY;
+      queen.LocY = userQueenY;
     }
     else
     { 
@@ -40,7 +39,7 @@ public class QueenAttack
     int userPawnX = int.Parse(pawnXCoordinates);
     if ((userPawnX >= 1) && (userPawnX <=8))
     {
-      newQueen.pawnLocX = userPawnX;
+      pawn.LocX = userPawnX;
     }
     else
     { 
@@ -51,21 +50,21 @@ public class QueenAttack
     int userPawnY = int.Parse(pawnYCoordinates);
     if ((userPawnY >= 1) && (userPawnY <=8))
     {
-      newQueen.pawnLocY = userPawnY;
+      pawn.LocY = userPawnY;
     }
     else
     { 
       Console.WriteLine("Please enter a number between 1 and 8.");
     }
-    Console.WriteLine(newQueen.locX + ", " + newQueen.locY);
-    Console.WriteLine(newQueen.pawnLocX + ", " + newQueen.pawnLocY);
-    if ((newQueen.locX == newQueen.pawnLocX) || (newQueen.locY == newQueen.pawnLocY))
+    Console.WriteLine(queen.LocX + ", " + queen.LocY);
+    Console.WriteLine(pawn.LocX + ", " + pawn.LocY);
+    if ((queen.LocX == pawn.LocX) || (queen.LocY == pawn.LocY) || (Math.Abs(queen.LocX - pawn.LocX) == Math.Abs(queen.LocY - pawn.LocY)))
     {
       Console.WriteLine("Queen takes pawn.");
     }
-    if (Math.Abs(newQueen.locX - newQueen.pawnLocX) == Math.Abs(newQueen.locX - newQueen.pawnLocX))
+    else
     {
-      Console.WriteLine("Diagonal");
+     Console.WriteLine("Pawn is safe.");
     }
   }
 }
